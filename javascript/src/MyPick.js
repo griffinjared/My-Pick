@@ -1,10 +1,9 @@
 import React from 'react';
 
 import NavBar from './nav-bar';
-import LiveFeed from './live-feed';
 import '../sass/all-watch.scss';
 
-export default class AllWatch extends React.Component {
+export default class MyPick extends React.Component {
     render() {
         return (
             <div className="all-watch">
@@ -13,7 +12,6 @@ export default class AllWatch extends React.Component {
                     <main className="mdl-layout__content">
                         <div className="header-space"/>
                         <div className="page-content">
-                            <LiveFeed/>
                         </div>
                     </main>
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-import AllWatch from './AllWatch';
+import MyPick from './MyPick';
 import reducers from './reducers';
 
 import '../css/material.min.css';
@@ -28,7 +28,7 @@ export default class App extends React.Component {
         return (
             <div className="app">
                 <Provider store={this.state.store}>
-                    <AllWatch/>
+                    <MyPick/>
                 </Provider>
             </div>
         );
