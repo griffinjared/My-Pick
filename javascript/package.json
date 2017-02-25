@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MichaelTLux/AllWatch"
+    "url": "https://github.com/griffinjared/My-Pick"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +28,7 @@
     "react-dom": "^15.0.0",
     "react-mdl": "^1.7.2",
     "react-redux": "^4.4.1",
-    "react-user-media": "^0.1.6",
+    "react-user-media": "^0.1.7",
     "redux": "^3.3.1",
     "resemblejs": "^2.2.1"
   },
