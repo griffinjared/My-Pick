@@ -1,7 +1,7 @@
 {
-  "name": "AllWatch",
+  "name": "MyPick",
   "version": "1.0.0",
-  "description": "A system to turn anything with a camera into security",
+  "description": "A web app that picks out where to eat at!",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack/config.js",
