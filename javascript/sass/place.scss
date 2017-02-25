@@ -1,0 +1,26 @@
+.mdl-card {
+  .mdl-card__title {
+    background-color: #16eb00;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+  }
+  .mdl-card__actions {
+    .mdl-grid {
+      .mdl-cell {
+        .back-button {
+          .mdl-button {
+            margin-left: 11em;
+            border: 1px solid #16eb00;
+          }
+        }
+
+        .try-again-button {
+          .mdl-button {
+            margin-left: 8em;
+            border: 1px solid #16eb00;
+          }
+        }
+      }
+    }
+  }
+}
