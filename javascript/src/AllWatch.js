@@ -1,7 +1,6 @@
 import React from 'react';
 
 import NavBar from './nav-bar';
-import Drawer from './drawer';
 import LiveFeed from './live-feed';
 import '../sass/all-watch.scss';
 
