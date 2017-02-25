@@ -1,10 +1,9 @@
 import React from 'react';
 
-import NavBar from './nav-bar';
+import {Place} from './place';
 import {Layout, Drawer, Content, Header, Navigation, Card, CardTitle, CardText, Grid, Cell} from 'react-mdl';
 import '../sass/my-pick.scss';
 
-//IMPORTANT: Google API Key: AIzaSyCqiZCrNTIzSUQKj__ZZq2wN7NwtRCkKKo
 
 export default class MyPick extends React.Component {
     render() {
@@ -14,13 +13,17 @@ export default class MyPick extends React.Component {
                 <Content>
                     <Grid>
                         <Cell col={12}>
-                            <Card shadow={0}>
-                                <CardTitle>What sound's good?</CardTitle>
-                                <CardText></CardText>
-                            </Card>
+                            {/*<Card shadow={0}>*/}
+                                {/*<CardTitle>What sound's good?</CardTitle>*/}
+                                {/*<CardText>*/}
+                                    {/**/}
+                                {/*</CardText>*/}
+                            {/*</Card>*/}
+                            <Place/>
                         </Cell>
                     </Grid>
                 </Content>
+                <div id="map-container"/>
             </Layout>
         )
     }

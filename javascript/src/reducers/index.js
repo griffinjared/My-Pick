@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import liveFeed from './live-feed';
+import place from './place';
 
 export default combineReducers({
-    liveFeed
+    place
 });
