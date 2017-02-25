@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Webcam from "react-user-media";
 import {saveAs} from "file-saver";
 import CapturedImage from "./captured-image";
 require('../css/main.css');
@@ -115,12 +114,6 @@ export class LiveFeed extends React.Component {
                     <Grid>
                         <Cell col={2}/>
                         <Cell col={8}>
-                            <div className={`webcam-container${renderRecordingBorder.call(null, isRunning)}`}>
-                                <Webcam
-                                    ref="webcam"
-                                    audio={false}
-                                />
-                            </div>
                         </Cell>
                     </Grid>
                     <Grid>
