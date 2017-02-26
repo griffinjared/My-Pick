@@ -4,9 +4,9 @@ import _ from 'lodash';
 
 function getInitialState() {
     return {
-        distance: 10000,
-        food: "pizza",
-        price: 1,
+        distance: 0,
+        food: "",
+        price: 0,
         placeDisplayed: false
     };
 }
@@ -17,7 +17,7 @@ export default (state = getInitialState(), action) => {
             return getInitialState();
         case Actions.place.setRadius:
             return Object.assign({}, state, {
-                radius: action.value
+                distance: action.value
             });
         case Actions.place.setFood:
             return Object.assign({}, state, {

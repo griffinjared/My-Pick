@@ -1,6 +1,7 @@
 import React from 'react';
-import FrontPage from './FrontPage'
-import Place from './place'
+import FrontPage from './FrontPage';
+import Container from './container';
+import Place from './place';
 import NavBar from './nav-bar';
 import {Layout, Drawer, Content, Header, Navigation, Card, CardTitle, CardText, Grid, Cell} from 'react-mdl';
 import '../sass/my-pick.scss';
@@ -15,7 +16,7 @@ export default class MyPick extends React.Component {
                 <Content>
                     <Grid>
                         <Cell col={12}>
-                            <FrontPage/>
+                            <Container/>
                         </Cell>
                     </Grid>
                 </Content>
