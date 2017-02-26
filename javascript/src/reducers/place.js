@@ -1,11 +1,10 @@
 const Actions = require('./actions')();
-import _ from 'lodash';
 
 function getInitialState() {
     return {
-        radius: 0,
-        food: "",
-        price: 0,
+        distance: 10000,
+        food: "pizza",
+        price: 1,
         placeDisplayed: false
     };
 }
