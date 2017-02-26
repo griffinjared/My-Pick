@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {Place} from './place';
+import Place from './place';
 import {Layout, Drawer, Content, Header, Navigation, Card, CardTitle, CardText, Grid, Cell} from 'react-mdl';
 import '../sass/my-pick.scss';
 
@@ -23,7 +22,9 @@ export default class MyPick extends React.Component {
                         </Cell>
                     </Grid>
                 </Content>
-                <div id="map-container"/>
+                <div
+                    id="map"
+                />
             </Layout>
         )
     }
