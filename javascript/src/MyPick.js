@@ -8,7 +8,7 @@ import '../sass/my-pick.scss';
 export default class MyPick extends React.Component {
     render() {
         return (
-            <Layout fixedHeader fixedDrawer style={{background: 'url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover'}}>
+            <Layout fixedHeader fixedDrawer style={{background: 'url(https://wallpaperscraft.com/image/restaurant_tables_chairs_comfort_interior_39213_2560x1440.jpg) center / cover'}}>
                 <Header title="MyPick"/>
                 <Content>
                     <Grid>
