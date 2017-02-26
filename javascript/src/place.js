@@ -6,49 +6,47 @@ import "../sass/place.scss";
 
 const Actions = require('./reducers/actions')();
 
-function createMap(position) {
-    console.log(position);
-    const {distance, food, price} = this.props,
-        location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-        },
-        map = new google.maps.Map(document.getElementsByName("map-container"), {
-            center: location,
-            zoom: 15
-        }),
-        service = new google.maps.places.PlacesService(map);
-
-    service.nearbySearch({
-        location: location,
-        radius: distance,
-        type: ['restaurant'],
-        keyword: food,
-        maxPriceLevel: price,
-        openNow: true
-    }, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log(_.sample(results));
-        }
-    });
-}
+let sampleResults = "Has not changed";
 
 function getLocation() {
     navigator.geolocation.getCurrentPosition(position => {
-        createMap.call(this, position);
-        console.log("map created and result logged");
-    })
+        console.log(document.getElementById("map"));
+
+        const {distance, food, price} = this.props,
+            location = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            },
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: location,
+                zoom: 15
+            }),
+            service = new google.maps.places.PlacesService(map);
+
+        console.log("we got through const inits");
+        console.log("location", location);
+
+        service.nearbySearch({
+            location: location,
+            radius: distance,
+            type: ['restaurant'],
+            keyword: food,
+            maxPriceLevel: price,
+            openNow: true
+        }, (results, status) => {
+            console.log("status = OK", status === google.maps.places.PlacesServiceStatus.OK);
+            console.log("status", status);
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                sampleResults = _.sample(results);
+            }
+            console.log(sampleResults);
+        });
+    });
 }
 
 export class Place extends React.Component {
-    componentWillMount() {
-        getLocation();
-    }
-
     render() {
         const {resetValues} = this.props;
-
-        console.log("inside render");
 
         return (
             <Card shadow={0}>
@@ -68,7 +66,7 @@ export class Place extends React.Component {
                         <Cell col={6}>
                             <div className="try-again-button">
                                 <Button
-                                    onClick={getLocation.bind(this)}
+                                    onClick={getLocation.call(this)}
                                 >Pick again</Button>
                             </div>
                         </Cell>
@@ -98,8 +96,8 @@ export function mapDispatchToProps(dispatch) {
             };
 
             dispatch(action);
-        },
-    }
+        }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Place);

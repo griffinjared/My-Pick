@@ -19,7 +19,9 @@ export default class MyPick extends React.Component {
                         </Cell>
                     </Grid>
                 </Content>
-                <div id="map-container"/>
+                <div
+                    id="map"
+                />
             </Layout>
         )
     }
