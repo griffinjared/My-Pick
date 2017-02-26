@@ -23,7 +23,7 @@ export class FrontPage extends React.Component{
                     </Grid>
                     <Grid>
                         <Cell col={8} align="top">
-                            <Textfield  label="Max Distance...(KM)" pattern="-?[0-9]*(\.[0-9]+)?" error="Input is not a number!"onChange={setDistance}/>
+                            <Textfield  label="Max Distance...(Miles)" pattern="-?[0-9]*(\.[0-9]+)?" error="Input is not a number!"onChange={setDistance}/>
                         </Cell>
                     </Grid>
                     <Grid noSpacing>
@@ -52,7 +52,7 @@ export function mapDispatchToProps(dispatch) {
         setDistance(){
             const action = {
                 type: Actions.place.setRadius,
-                value: parseInt(event.target.value) * 1000
+                value: parseInt(event.target.value) * 1609
             };
 
             dispatch(action);
