@@ -1,6 +1,4 @@
-/**
- * Created by DGXU on 2/25/2017.
- */
+
 import React from 'react';
 import '../sass/nav-bar.scss';
 

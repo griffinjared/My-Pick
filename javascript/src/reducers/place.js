@@ -1,6 +1,6 @@
 const Actions = require('./actions')();
 import _ from 'lodash';
-
+//.call of static stuff
 function getInitialState() {
     return {
         radius: 0,

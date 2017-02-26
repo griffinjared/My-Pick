@@ -79,6 +79,7 @@ export class Place extends React.Component {
     }
 }
 
+
 export function mapStateToProps(state) {
     const {distance, food, price} = state.place;
 
