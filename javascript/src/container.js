@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 const Actions = require('./reducers/actions')();
-import {Layout, Drawer, Content, Header, Navigation, Button, Slider, Card, CardTitle, CardText, Textfield, Grid, Cell} from 'react-mdl';
 import FrontPage from './FrontPage';
 import Place from './place';
 

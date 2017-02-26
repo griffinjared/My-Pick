@@ -18,18 +18,18 @@ export class FrontPage extends React.Component{
                         </Cell>
                         <Cell col={4} align="middle">
                             Cost:
-                            <Slider min={0} max={5} default={3} onChange={setPrice}/>
+                            <Slider min={0} max={4} default={2} onChange={setPrice}/>
                         </Cell>
                     </Grid>
                     <Grid>
                         <Cell col={8} align="top">
-                            <Textfield  label="Max Distance...(Miles)" onChange={setDistance}/>
+                            <Textfield  label="Max Distance...(KM)" pattern="-?[0-9]*(\.[0-9]+)?" error="Input is not a number!"onChange={setDistance}/>
                         </Cell>
                     </Grid>
                     <Grid noSpacing>
                         <Cell col={12}>
                             <center>
-                                <Button onClick={setDisplay}>     Find!     </Button>
+                                <Button onClick={setDisplay}>Find!</Button>
                             </center>
                         </Cell>
                     </Grid>
@@ -52,7 +52,7 @@ export function mapDispatchToProps(dispatch) {
         setDistance(){
             const action = {
                 type: Actions.place.setRadius,
-                value: parseInt(event.target.value)
+                value: parseInt(event.target.value) * 1000
             };
 
             dispatch(action);

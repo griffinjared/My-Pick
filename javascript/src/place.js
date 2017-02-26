@@ -1,13 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
 import _ from 'lodash';
-import {Card, CardTitle, CardText, CardActions, Grid, Cell, Button} from "react-mdl";
+import {Card, CardTitle, CardText, CardActions, Grid, Cell, Textfield, Button} from "react-mdl";
 import "../sass/place.scss";
 
 const Actions = require('./reducers/actions')();
 
 let sampleResults = "Has not changed";
-
+function sampleResult() {
+    return sampleResults;
+}
 function getLocation() {
     navigator.geolocation.getCurrentPosition(position => {
         console.log(document.getElementById("map"));
@@ -32,27 +34,32 @@ function getLocation() {
             type: ['restaurant'],
             keyword: food,
             maxPriceLevel: price,
-            openNow: true
-        }, (results, status) => {
-            console.log("status = OK", status === google.maps.places.PlacesServiceStatus.OK);
-            console.log("status", status);
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                sampleResults = _.sample(results);
+            openNow: false
+        }, callback);
+
+        function callback(results, status) {
+            if(status === google.maps.places.PlacesServiceStatus.OK){
+                for( var i =0; i < results.length;i++){
+                   sampleResults = results[1].name;
+                   console.log(sampleResults);
+                }
             }
-            console.log(sampleResults);
-        });
+        }
+
     });
 }
 
 export class Place extends React.Component {
     render() {
-        const {resetValues} = this.props;
+        const {resetValues, sampleResult} = this.props;
 
         return (
             <Card shadow={0}>
                 <CardTitle>Here's my pick!</CardTitle>
                 <CardText>
+                    <cell col={12}>
 
+                    </cell>
                 </CardText>
                 <CardActions>
                     <Grid>
