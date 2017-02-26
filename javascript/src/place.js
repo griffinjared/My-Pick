@@ -7,15 +7,10 @@ import "../sass/place.scss";
 const Actions = require('./reducers/actions')();
 
 let sampleResults = "Has not changed";
-function sampleResult() {
-    return sampleResults;
-}
-function getLocation() {
-    const {setFood} = this.props;
-    navigator.geolocation.getCurrentPosition(position => {
-        console.log(document.getElementById("map"));
 
-        const {distance, food, price} = this.props,
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(position => {
+        const {distance, food, price, setPlace} = this.props,
             location = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -26,9 +21,6 @@ function getLocation() {
             }),
             service = new google.maps.places.PlacesService(map);
 
-        console.log("we got through const inits");
-        console.log("location", location);
-
         service.nearbySearch({
             location: location,
             radius: distance,
@@ -36,34 +28,60 @@ function getLocation() {
             keyword: food,
             maxPriceLevel: price,
             openNow: false
-        }, callback);
+        }, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                sampleResults = _.sample(results);
+                console.log("sample", sampleResults);
 
-        function callback(results, status) {
-            if(status === google.maps.places.PlacesServiceStatus.OK){
-                let num = Math.floor(Math.random()* results.length)+1
-                for( var i =0; i < num;i++){
-                   sampleResults = results[1].name;
-                   console.log(sampleResults);
-                }
-                setFood(sampleResults);
-
+                service.getDetails({
+                    placeId: sampleResults.place_id
+                }, (place, status) => {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        console.log("place", place);
+                        setPlace(place);
+                    }
+                });
             }
-        }
-
+        });
     });
 }
 
 export class Place extends React.Component {
     render() {
-        const {resetValues, food} = this.props;
+        const {resetValues, place} = this.props;
 
         return (
             <Card shadow={0}>
                 <CardTitle>Here's my pick!</CardTitle>
                 <CardText>
-                    <cell col={12}>
-                        {food}
-                    </cell>
+                    <Grid>
+                        <Cell col={12}>
+                            <div className="place-name">
+                                <p>
+                                    {place.name}
+                                </p>
+                            </div>
+                        </Cell>
+                        <Cell col={4}>
+                            <div className="place-address">
+                                <p>
+                                    {place.vicinity}
+                                </p>
+                            </div>
+                        </Cell>
+                        <Cell col={4}>
+                            <div className="place-phone">
+                                <p>
+                                    {place.formatted_phone_number}
+                                </p>
+                            </div>
+                        </Cell>
+                        <Cell col={4}>
+                            <div className="place-map">
+                                <a href={place.url} target="_blank">Maps Link</a>
+                            </div>
+                        </Cell>
+                    </Grid>
                 </CardText>
                 <CardActions>
                     <Grid>
@@ -76,7 +94,7 @@ export class Place extends React.Component {
                         </Cell>
                         <Cell col={6}>
                             <div className="try-again-button">
-                                <Button
+                                <Button disabled
                                     onClick={getLocation.call(this)}
                                 >Pick again</Button>
                             </div>
@@ -89,12 +107,13 @@ export class Place extends React.Component {
 }
 
 export function mapStateToProps(state) {
-    const {distance, food, price} = state.place;
+    const {distance, food, price, place} = state.place;
 
     return {
         distance,
         food,
-        price
+        price,
+        place
     };
 }
 
@@ -114,6 +133,14 @@ export function mapDispatchToProps(dispatch) {
             };
             dispatch(action);
         },
+        setPlace(place) {
+            const action = {
+                type: Actions.place.setPlace,
+                value: place
+            };
+
+            dispatch(action);
+        }
     };
 }
 

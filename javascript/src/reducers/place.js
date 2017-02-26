@@ -7,7 +7,8 @@ function getInitialState() {
         distance: 0,
         food: "",
         price: 0,
-        placeDisplayed: false
+        placeDisplayed: false,
+        place: {}
     };
 }
 
@@ -30,6 +31,10 @@ export default (state = getInitialState(), action) => {
         case Actions.place.setPlaceDisplayed:
             return Object.assign({}, state, {
                 placeDisplayed: action.value
+            });
+        case Actions.place.setPlace:
+            return Object.assign({}, state, {
+                place: action.value
             });
         default:
             return state;

@@ -6,7 +6,8 @@ module.exports = () => {
             setFood: i++,
             setRadius: i++,
             setPrice: i++,
-            setPlaceDisplayed: i++
+            setPlaceDisplayed: i++,
+            setPlace: i++
         }
     };
 };
